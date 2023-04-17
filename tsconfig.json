@@ -10,7 +10,11 @@
     "allowJs": true,
     "sourceMap": true,
     "esModuleInterop": true,
-    "strict": true,         
+    "strict": true,    
+    "paths": {
+      "@src/*": ["./src/*"],
+      "@test/*": ["./test/*"]
+    },     
   },
   "include": ["./src/**/*.ts", "./test/**/*.ts"],
   "exclude": ["node_modules", "dist"]
