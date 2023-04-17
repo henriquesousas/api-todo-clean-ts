@@ -1,6 +1,6 @@
 import { Email } from '@src/domain/entities/email';
 import { Password } from '@src/domain/entities/password';
-import { Type, isError } from '@src/shared/result';
+import { Type, isError } from '@src/main/shared/result';
 
 export class User {
   constructor(

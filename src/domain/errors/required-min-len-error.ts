@@ -1,4 +1,4 @@
-import { DomainError } from '@src/domain/errors/domain-error';
+import { DomainError } from '@src/domain/errors/base/domain-error';
 
 export class RequiredMinLenError extends DomainError {
   constructor(fieldName: string, min: number) {

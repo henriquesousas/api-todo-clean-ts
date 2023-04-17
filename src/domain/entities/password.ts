@@ -1,4 +1,4 @@
-import { Type } from '@src/shared/result';
+import { Type } from '@src/main/shared/result';
 import { RequiredMinLenError } from '../errors/required-min-len-error';
 
 export class Password {

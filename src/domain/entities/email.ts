@@ -1,5 +1,5 @@
-import { Type } from '@src/shared/result';
-import { EmailInvalidError } from '@src/domain/errors/email-invalid-error';
+import { Type } from '@src/main/shared/result';
+import { InvalidEmailError } from '@src/domain/errors/invalid-email-error';
 
 export class Email {
   constructor(private readonly email: string) {}
@@ -7,7 +7,7 @@ export class Email {
   static create(email: string): Type<Email> {
     const re = /\S+@\S+\.\S+/;
     const isEmail = re.test(email);
-    return isEmail ? new Email(email) : new EmailInvalidError(email);
+    return isEmail ? new Email(email) : new InvalidEmailError(email);
   }
 
   get value(): string {

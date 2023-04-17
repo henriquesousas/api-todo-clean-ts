@@ -1,5 +1,5 @@
-import { DomainError } from '@src/domain/errors/domain-error';
-import { ApplicationError } from '@src/domain/errors/application-error';
+import { DomainError } from '@src/domain/errors/base/domain-error';
+import { ApplicationError } from '@src/domain/errors/base/application-error';
 
 type Result<T> = T | ApplicationError;
 export type Type<T> = Result<T>;
