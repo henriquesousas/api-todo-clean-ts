@@ -1,5 +1,5 @@
-import { Type } from "@src/shared/result";
-import { EmailInvalidError } from "@src/domain/errors/email-invalid-error";
+import { Type } from '@src/shared/result';
+import { EmailInvalidError } from '@src/domain/errors/email-invalid-error';
 
 export class Email {
   constructor(private readonly email: string) {}

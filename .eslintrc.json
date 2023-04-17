@@ -28,6 +28,6 @@
         "import/order": "off",
         "no-restricted-syntax": "off",
         "func-names": "off",
-        "import/no-extraneous-dependencies": "off",
+        "import/no-extraneous-dependencies": "off"
     }
 }

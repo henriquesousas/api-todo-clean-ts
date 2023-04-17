@@ -5,7 +5,7 @@
   "main": "index.js",
   "type": "commonjs",
   "scripts": {
-    "build": "rimraf dist && tsc",
+    "build": "rimraf dist && tsc -p tsconfig-build.json",
     "start": "node dist/src/index.js",
     "dev": "nodemon -L src/index.ts",
     "test": "jest  --runInBand",
