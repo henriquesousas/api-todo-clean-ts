@@ -11,11 +11,3 @@ export class UserMapper implements Mapper<any, User> {
       password: new Password(data.password) } as User;   
   }
 }
-
-// export const toUser = (document: any): User => {
-//   return { 
-//     ... document,
-//     email: new Email(document.email), 
-//     password: new Password(document.password) } as User;   
-// }
-

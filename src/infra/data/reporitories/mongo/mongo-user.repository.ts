@@ -2,8 +2,8 @@ import { ObjectId } from 'mongodb';
 import { CreateUserRepository } from '@src/application/data/repositories/user/create-user.repository';
 import { User } from '@src/domain/entities/user';
 import { createUserDto } from '@src/domain/usecases/user/create-user';
-import { MongoHelper } from './mongo-helper';
-import { UserMapper } from './mapper/user.mapper';
+import { MongoHelper } from '@src/infra/data/reporitories/mongo/mongo-helper';
+import { UserMapper } from '@src/infra/data/reporitories/mongo/mapper/user.mapper';
 
 export class MongoUserRepository implements CreateUserRepository {
   async create(dto: createUserDto): Promise<User> {
