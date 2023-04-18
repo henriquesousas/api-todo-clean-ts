@@ -10,9 +10,7 @@ export class MongoUserRepository
   extends BaseMongoRepository
   implements CreateUserRepository, GetUserByEmailRepository
 {
-  getCollection(): string {
-    return 'users';
-  }
+  getCollection = (): string => 'users';
 
   async create(dto: createUserDto): Promise<User> {
     const insertedId = await this.insert(dto);
