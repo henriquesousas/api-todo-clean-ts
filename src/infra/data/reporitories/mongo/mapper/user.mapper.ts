@@ -3,8 +3,8 @@ import { Password } from '@src/domain/entities/password';
 import { User } from '@src/domain/entities/user';
 import { Mapper } from './mapper';
 
-export class UserMapper implements Mapper<any, User> {
-  toObject(data: any): User {
+export class UserMapper implements Mapper<Record<string, string>, User> {
+  toObject(data: Record<string, string>): User {
     return {
       ...data,
       email: new Email(data.email),

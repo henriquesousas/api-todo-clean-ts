@@ -3,8 +3,8 @@ import { MongoHelper } from '@src/infra/data/reporitories/mongo/mongo-helper';
 
 describe('MongoUserRepository', () => {
   beforeAll(async () => {
-    const url = process.env.MONGO_URL;
-    await MongoHelper.connect(url!);
+    const url = process.env.MONGO_URL as string;
+    await MongoHelper.connect(url);
   });
 
   afterAll(async () => {
