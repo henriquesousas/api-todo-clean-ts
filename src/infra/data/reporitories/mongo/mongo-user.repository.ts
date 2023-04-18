@@ -3,7 +3,7 @@ import { CreateUserRepository } from '@src/application/data/repositories/user/cr
 import { User } from '@src/domain/entities/user';
 import { createUserDto } from '@src/domain/usecases/user/create-user';
 import { UserMapper } from '@src/infra/data/reporitories/mongo/mapper/user.mapper';
-import { BaseMongoRepository } from './base-mongo.repository';
+import { BaseMongoRepository } from './helper/base-mongo.repository';
 import { GetUserByEmailRepository } from '@src/application/data/repositories/user/get-user-by-email.repository';
 
 export class MongoUserRepository

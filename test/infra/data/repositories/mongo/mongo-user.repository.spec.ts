@@ -1,5 +1,5 @@
 import { MongoUserRepository } from '@src/infra/data/reporitories/mongo/mongo-user.repository';
-import { MongoHelper } from '@src/infra/data/reporitories/mongo/mongo-helper';
+import { MongoHelper } from '@src/infra/data/reporitories/mongo/helper/mongo-helper';
 
 describe('MongoUserRepository', () => {
   beforeAll(async () => {
