@@ -21,4 +21,17 @@ describe('MongoUserRepository', () => {
     expect(user.id).toBeTruthy();
     expect(user.name).toEqual('any_name');
   });
+
+  it('Get a user by email', async () => {
+    const sut = new MongoUserRepository();
+    await sut.create({
+      name: 'any_name',
+      email: 'any_email',
+      password: 'any_password',
+    });
+
+    const user = await sut.getByEmail('any_email');
+    expect(user.id).toBeTruthy();
+    expect(user.name).toEqual('any_name');
+  });
 });
