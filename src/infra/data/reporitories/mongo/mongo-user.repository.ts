@@ -9,9 +9,10 @@ export class MongoUserRepository implements CreateUserRepository {
   async create(dto: createUserDto): Promise<User> {
     const collection = MongoHelper.getCollection('users');
     const data = await collection.insertOne(dto);
+    data;
     const document = await collection.findOne({
       _id: new ObjectId(data.insertedId.toHexString()),
     });
-    return new UserMapper().toObject(MongoHelper.map(document))
+    return new UserMapper().toObject(MongoHelper.map(document));
   }
 }

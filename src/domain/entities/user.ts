@@ -7,7 +7,7 @@ export class User {
     readonly name: string,
     readonly email: Email,
     readonly password: Password,
-    readonly id?: string,
+    readonly id?: string
   ) {}
 
   static create(name: string, email: string, password: string): Type<User> {
