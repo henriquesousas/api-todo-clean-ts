@@ -1,17 +1,26 @@
-import { Email } from '@src/domain/entities/email';
-import { Password } from '@src/domain/entities/password';
-import { User } from '@src/domain/entities/user';
 import { MongoUserRepository } from '@src/infra/data/reporitories/mongo/mongo-user.repository';
+import { MongoHelper } from '@src/infra/data/reporitories/mongo/mongo-helper';
 
 describe('MongoUserRepository', () => {
+
+  beforeAll(async () => {
+    const url = process.env.MONGO_URL;
+    await MongoHelper.connect(url!);  
+  });
+
+  afterAll(async () => {
+    await MongoHelper.disconnect();
+  });
+
+
   it('should create a user', async () => {
     const sut = new MongoUserRepository();
-    const result = await sut.create({
+    const user = await sut.create({
       name: 'any_name',
       email: 'any_email',
       password: 'any_password',
     });
-    const user = new User('any_name', new Email(''), new Password(''));
-    expect(result).toEqual(user);
+    expect(user.id).toBeTruthy()
+    expect(user.name).toEqual('any_name');
   });
 });

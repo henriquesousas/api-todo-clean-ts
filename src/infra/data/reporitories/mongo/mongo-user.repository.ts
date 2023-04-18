@@ -1,19 +1,17 @@
+import { ObjectId } from 'mongodb';
 import { CreateUserRepository } from '@src/application/data/repositories/user/create-user.repository';
 import { User } from '@src/domain/entities/user';
 import { createUserDto } from '@src/domain/usecases/user/create-user';
 import { MongoHelper } from './mongo-helper';
-import { ObjectId } from 'mongodb';
-import { Email } from '@src/domain/entities/email';
-import { Password } from '@src/domain/entities/password';
+import { UserMapper } from './mapper/user.mapper';
 
 export class MongoUserRepository implements CreateUserRepository {
   async create(dto: createUserDto): Promise<User> {
-    const data = await MongoHelper.getCollection('users').insertOne(dto);
-    const user = await MongoHelper.getCollection('users').findOne({
+    const collection = MongoHelper.getCollection('users');
+    const data = await collection.insertOne(dto);
+    const document = await collection.findOne({
       _id: new ObjectId(data.insertedId.toHexString()),
     });
-    // return user;
-    const user2 = new User('any_name', new Email(''), new Password(''));
-    return Promise.resolve(user2);
+    return new UserMapper().toObject(MongoHelper.map(document))
   }
 }

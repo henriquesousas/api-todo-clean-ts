@@ -1,3 +1,5 @@
+import  './main/config/module-alias'
+
 import express, { Request, Response } from 'express';
 
 const app = express();
