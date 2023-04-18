@@ -4,21 +4,21 @@ import { Type, isError } from '@src/main/shared/result';
 
 export class User {
   constructor(
-    private readonly name: string,
-    private readonly email: Email,
-    private readonly password: Password
+    readonly name: string,
+    readonly email: Email,
+    readonly password: Password
   ) {}
 
   static create(name: string, email: string, password: string): Type<User> {
-    const emailOrEror = Email.create(email);
-    const passwordOrError = Password.create(password);
-    if (isError(emailOrEror)) {
-      return emailOrEror;
+    const emailOrError = Email.create(email);
+    if (isError(emailOrError)) {
+      return emailOrError;
     }
 
+    const passwordOrError = Password.create(password);
     if (isError(passwordOrError)) {
       return passwordOrError;
     }
-    return new User(name, emailOrEror, passwordOrError);
+    return new User(name, emailOrError, passwordOrError);
   }
 }
