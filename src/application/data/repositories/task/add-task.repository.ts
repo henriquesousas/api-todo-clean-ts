@@ -1,6 +1,11 @@
 import { Task } from '@src/domain/entities/task';
-import { Type } from '@src/main/shared/result';
+
+export type AddTaskDto = {
+  userId: string;
+  name: string;
+  status: string;
+};
 
 export interface AddTaskRepository {
-  add(name: string): Promise<Type<Task>>;
+  add(dto: AddTaskDto): Promise<Task | null>;
 }

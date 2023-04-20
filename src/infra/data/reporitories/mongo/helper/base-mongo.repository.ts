@@ -1,4 +1,4 @@
-import { Document, FilterOperations } from 'mongodb';
+import { Document, FilterOperations, ObjectId } from 'mongodb';
 import { MongoHelper } from './mongo-helper';
 
 export abstract class BaseMongoRepository {
@@ -9,7 +9,7 @@ export abstract class BaseMongoRepository {
     return result.insertedId.toString();
   }
 
-  async findOne(
+  protected async findOne(
     filter: FilterOperations<string>,
     projection?: FilterOperations<string>
   ): Promise<Document> {
@@ -23,17 +23,33 @@ export abstract class BaseMongoRepository {
     return document && MongoHelper.map(document);
   }
 
-  async update(filter: FilterOperations<string>, data: FilterOperations<Document>) {
+  protected async find(
+    filter: FilterOperations<string>,
+    projection?: FilterOperations<string>
+  ): Promise<Document[]> {
+    const document = await MongoHelper.getCollection(this.getCollection())
+      .find(filter, {
+        projection: projection?.fields ?? {},
+      })
+      .toArray();
+
+    return document && MongoHelper.maps(document);
+  }
+
+  protected async update(
+    filter: FilterOperations<string>,
+    data: FilterOperations<Document>
+  ) {
     await MongoHelper.getCollection(this.getCollection()).updateOne(filter, {
       $set: data,
     });
   }
 
-  async delete(data: FilterOperations<Document>) {
-    await MongoHelper.getCollection(this.getCollection()).deleteOne(data);
+  protected async deleteOne(filter: FilterOperations<string>) {
+    await MongoHelper.getCollection(this.getCollection()).deleteOne(filter);
   }
 
-  async aggregate(query: any[]): Promise<Document[]> {
+  protected async aggregate(query: any[]): Promise<Document[]> {
     const documents = await MongoHelper.getCollection(this.getCollection())
       .aggregate(query)
       .toArray();
