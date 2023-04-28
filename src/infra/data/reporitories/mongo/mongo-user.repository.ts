@@ -19,8 +19,6 @@ export class MongoUserRepository
 
   async getByEmail(email: string): Promise<Type<User>> {
     const userDocument = await this.findOne({ email });
-    console.log(userDocument);
-
     return userDocument ? new UserMapper().toObject(userDocument) : new NoData();
   }
 }
