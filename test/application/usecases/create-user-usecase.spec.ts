@@ -7,8 +7,9 @@ import { EmailAlreadyExistError } from '@src/domain/errors/email_already_existe.
 import { CreateUserRepository } from '@src/application/data/repositories/user/create-user.repository';
 import { GetUserByEmailRepository } from '@src/application/data/repositories/user/get-user-by-email.repository';
 import { Hash } from '@src/application/cryptography/cryptography/hash';
-import { UserRepositorySpy } from '@test/infra/data/repositories/mongo/mocks/user-repository.spy';
+import { UserRepositoryStub } from '@test/infra/data/repositories/mongo/mocks/user-repository.stub';
 import { HashSpy } from '@test/infra/cryptography/mocks/hash.spy';
+import { NoData } from '@src/infra/data/reporitories/errors/no-data';
 
 interface sutTypes {
   sut: CreateUser;
@@ -18,8 +19,8 @@ interface sutTypes {
 }
 
 const makeSut = (): sutTypes => {
-  const createUserRepoSpy = new UserRepositorySpy();
-  const getUserRepoSpy = new UserRepositorySpy();
+  const createUserRepoSpy = new UserRepositoryStub();
+  const getUserRepoSpy = new UserRepositoryStub();
   const hashSpy = new HashSpy();
   const sut = new CreateUserUseCase(createUserRepoSpy, getUserRepoSpy, hashSpy);
   return {
@@ -32,7 +33,10 @@ const makeSut = (): sutTypes => {
 
 describe('CraeteUserUseCase', () => {
   it('should create a user', async () => {
-    const { sut } = makeSut();
+    const { sut, getUserRepoSpy } = makeSut();
+    jest.spyOn(getUserRepoSpy, 'getByEmail').mockImplementationOnce(async () => {
+      return new NoData();
+    });
     const accessTokenOrError = (await sut.execute({
       name: 'any_name',
       email: 'any_email@mail.com',
@@ -43,8 +47,11 @@ describe('CraeteUserUseCase', () => {
   });
 
   it('should call a hash with correct value', async () => {
-    const { sut, hashSpy } = makeSut();
+    const { sut, hashSpy, getUserRepoSpy } = makeSut();
     const hashSpyOn = jest.spyOn(hashSpy, 'create');
+    jest.spyOn(getUserRepoSpy, 'getByEmail').mockImplementationOnce(async () => {
+      return new NoData();
+    });
     await sut.execute({
       name: 'any_name',
       email: 'any_email',
