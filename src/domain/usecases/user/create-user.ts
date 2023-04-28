@@ -1,3 +1,5 @@
+import { Type } from '@src/main/shared/result';
+
 export type createUserDto = {
   name: string;
   email: string;
@@ -9,5 +11,5 @@ export type CreateUserResultDto = {
 };
 
 export interface CreateUser {
-  execute(dto: createUserDto): Promise<CreateUserResultDto>;
+  execute(dto: createUserDto): Promise<Type<CreateUserResultDto>>;
 }

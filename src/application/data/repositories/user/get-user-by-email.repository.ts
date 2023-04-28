@@ -1,5 +1,6 @@
 import { User } from '@src/domain/entities/user';
+import { Type } from '@src/main/shared/result';
 
 export interface GetUserByEmailRepository {
-  getByEmail(email: string): Promise<User>;
+  getByEmail(email: string): Promise<Type<User>>;
 }
