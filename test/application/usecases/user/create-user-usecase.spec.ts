@@ -9,7 +9,7 @@ import { GetUserByEmailRepository } from '@src/application/data/repositories/use
 import { Hash } from '@src/application/cryptography/cryptography/hash';
 import { UserRepositoryStub } from '@test/infra/data/repositories/mongo/mocks/mongo-user-repository.stub';
 import { HashSpy } from '@test/infra/cryptography/mocks/hash.spy';
-import { NoData } from '@src/infra/data/reporitories/errors/no-data';
+import { NoData } from '@src/infra/data/repositories/errors/no-data';
 
 interface sutTypes {
   sut: CreateUser;

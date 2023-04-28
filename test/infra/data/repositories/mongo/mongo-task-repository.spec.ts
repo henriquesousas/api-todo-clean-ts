@@ -1,5 +1,5 @@
-import { MongoTaskRepository } from '@src/infra/data/reporitories/mongo/mongo-task.repository';
-import { MongoHelper } from '@src/infra/data/reporitories/mongo/helper/mongo-helper';
+import { MongoTaskRepository } from '@src/infra/data/repositories/mongo/mongo-task.repository';
+import { MongoHelper } from '@src/infra/data/repositories/mongo/helper/mongo-helper';
 import { Status, Task } from '@src/domain/entities/task';
 
 describe('MongoTaskRepository', () => {

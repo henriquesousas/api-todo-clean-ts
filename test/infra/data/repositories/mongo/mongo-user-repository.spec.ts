@@ -1,5 +1,5 @@
-import { MongoUserRepository } from '@src/infra/data/reporitories/mongo/mongo-user.repository';
-import { MongoHelper } from '@src/infra/data/reporitories/mongo/helper/mongo-helper';
+import { MongoUserRepository } from '@src/infra/data/repositories/mongo/mongo-user.repository';
+import { MongoHelper } from '@src/infra/data/repositories/mongo/helper/mongo-helper';
 import { User } from '@src/domain/entities/user';
 
 describe('MongoUserRepository', () => {
