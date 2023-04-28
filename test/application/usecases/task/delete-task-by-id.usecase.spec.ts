@@ -1,5 +1,5 @@
 import { MongoTaskRepositoryStub } from '@test/infra/data/repositories/mongo/mocks/mongo-task-repository.stub';
-import { DeleteTaskUseCase } from '@src/application/usecases/delete-task.usecase';
+import { DeleteTaskUseCase } from '@src/application/usecases/task/delete-task.usecase';
 
 describe('DeleteTaskUseCase', () => {
   it('should delete a task', async () => {

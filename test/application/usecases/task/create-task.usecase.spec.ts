@@ -1,4 +1,4 @@
-import { CreateTaskUseCase } from '@src/application/usecases/create-task.usecase';
+import { CreateTaskUseCase } from '@src/application/usecases/task/create-task.usecase';
 import { MongoTaskRepositoryStub } from '@test/infra/data/repositories/mongo/mocks/mongo-task-repository.stub';
 
 describe('CreateTaskUseCase', () => {

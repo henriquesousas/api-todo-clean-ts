@@ -1,4 +1,4 @@
-import { CreateUserUseCase } from '@src/application/usecases/create-user.usecase';
+import { CreateUserUseCase } from '@src/application/usecases/user/create-user.usecase';
 import { CreateUser, CreateUserResultDto } from '@src/domain/usecases/user/create-user';
 import { User } from '@src/domain/entities/user';
 import { Email } from '@src/domain/entities/email';
