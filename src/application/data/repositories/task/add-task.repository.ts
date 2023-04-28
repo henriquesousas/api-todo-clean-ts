@@ -1,4 +1,3 @@
-import { Task } from '@src/domain/entities/task';
 
 export type AddTaskDto = {
   userId: string;
@@ -7,5 +6,5 @@ export type AddTaskDto = {
 };
 
 export interface AddTaskRepository {
-  add(dto: AddTaskDto): Promise<Task | null>;
+  add(dto: AddTaskDto): Promise<string>;
 }

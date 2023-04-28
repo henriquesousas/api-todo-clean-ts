@@ -20,19 +20,19 @@ describe('MongoTaskRepository', () => {
     await MongoHelper.getCollection('tasks').deleteMany({});
   });
 
-  const addTask = async (): Promise<Task | null> => {
-    const task = await sut.add({
+  const addTask = async (): Promise<string> => {
+    const taskId = await sut.add({
       userId,
       name: 'any_name',
       status: Status.Wait.toString(),
     });
-    return task;
+    return taskId;
   };
 
   describe('Add', () => {
     it('should add a task', async () => {
-      const task = await addTask();
-      expect(task?.name).toBe('any_name');
+      const taskId = await addTask();
+      expect(taskId).toBeTruthy();
     });
   });
 
@@ -50,8 +50,8 @@ describe('MongoTaskRepository', () => {
     });
 
     it('should return a task by id', async () => {
-      const taskCreated = (await addTask()) as Task;
-      const task = await sut.getById(taskCreated.id);
+      const taskId = (await addTask()) as string;
+      const task = await sut.getById(taskId);
       expect(task?.userId).toBe('6441739f90de16fa9eaa7a5a');
       expect(task?.name).toBe('any_name');
       expect(task?.status).toBe('Aguardando');
@@ -65,9 +65,9 @@ describe('MongoTaskRepository', () => {
 
   describe('Delete', () => {
     it('should delete a task', async () => {
-      const taskCreated = (await addTask()) as Task;
-      await sut.delete(taskCreated.id);
-      const task = await sut.getById(taskCreated.id);
+      const taskId = (await addTask()) as string;
+      await sut.delete(taskId);
+      const task = await sut.getById(taskId);
       expect(task).toBeFalsy();
     });
   });

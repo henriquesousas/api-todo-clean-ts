@@ -20,9 +20,8 @@ export class MongoTaskRepository
 {
   getCollection = (): string => 'tasks';
 
-  async add(dto: AddTaskDto): Promise<Task | null> {
-    const taskId = await this.insert(dto);
-    return await this.getById(taskId);
+  async add(dto: AddTaskDto): Promise<string> {
+    return await this.insert(dto);
   }
 
   async getByStatus(userId: string, status: Status): Promise<Type<Task[]>> {

@@ -7,7 +7,7 @@ import { EmailAlreadyExistError } from '@src/domain/errors/email_already_existe.
 import { CreateUserRepository } from '@src/application/data/repositories/user/create-user.repository';
 import { GetUserByEmailRepository } from '@src/application/data/repositories/user/get-user-by-email.repository';
 import { Hash } from '@src/application/cryptography/cryptography/hash';
-import { UserRepositoryStub } from '@test/infra/data/repositories/mongo/mocks/user-repository.stub';
+import { UserRepositoryStub } from '@test/infra/data/repositories/mongo/mocks/mongo-user-repository.stub';
 import { HashSpy } from '@test/infra/cryptography/mocks/hash.spy';
 import { NoData } from '@src/infra/data/reporitories/errors/no-data';
 
