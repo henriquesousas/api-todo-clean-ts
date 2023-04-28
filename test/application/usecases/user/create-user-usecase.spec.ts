@@ -3,7 +3,7 @@ import { CreateUser, CreateUserResultDto } from '@src/domain/usecases/user/creat
 import { User } from '@src/domain/entities/user';
 import { Email } from '@src/domain/entities/email';
 import { Password } from '@src/domain/entities/password';
-import { EmailAlreadyExistError } from '@src/domain/errors/email_already_existe.error';
+import { EmailAlreadyExistError } from '@src/domain/errors/email_already_exist.error';
 import { CreateUserRepository } from '@src/application/data/repositories/user/create-user.repository';
 import { GetUserByEmailRepository } from '@src/application/data/repositories/user/get-user-by-email.repository';
 import { Hash } from '@src/application/cryptography/cryptography/hash';

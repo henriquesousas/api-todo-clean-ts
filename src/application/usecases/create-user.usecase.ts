@@ -8,7 +8,7 @@ import { Hash } from '@src/application/cryptography/cryptography/hash';
 import { Type, isSuccess } from '@src/main/shared/result';
 import { CreateUserRepository } from '@src/application/data/repositories/user/create-user.repository';
 import { GetUserByEmailRepository } from '@src/application/data/repositories/user/get-user-by-email.repository';
-import { EmailAlreadyExistError } from '@src/domain/errors/email_already_existe.error';
+import { EmailAlreadyExistError } from '@src/domain/errors/email_already_exist.error';
 
 export class CreateUserUseCase implements CreateUser {
   constructor(
